@@ -15,11 +15,17 @@ refbandsolve4=function(D0,D1,D2,D3,D4,b) {
 
 n=2000;
 D0=runif(n);
-D1=-0.2*runif(n-1);
-D2=0.3*runif(n-2);
+D1=-2*runif(n-1);
+D2=3*runif(n-2);
 D3=0.4*runif(n-3);
-D4=-0.1*runif(n-4);
+D4=-0.9*runif(n-4);
 b=runif(n)
-ref=refbandsolve4(D0,D1,D2,D3,D4,b)
+ref=refbandsolve4(D0,D1,D2,D3,D4,b);
 x=bandsolve(D0,D1,D2,D3,D4,b)
 plot(x[1:1000],ref$x[1:1000]); abline(0,1)
+
+## BandSolveK
+D=cbind(D0,c(D1,0),c(D2,0,0),c(D3,0,0,0),c(D4,0,0,0,0))
+D=cbind(D0,c(D1,0))
+x=bandsolveK(Ddata = D,bdata = b)
+xslow=slowbandsolve(D,b)

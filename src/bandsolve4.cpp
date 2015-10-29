@@ -79,7 +79,7 @@ NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVect
       }
       if (i<n-3) {
         L4[i-1]=L4[i-1]/U0[i-1];
-        L3[i]=L3[i]-L1[i-1]*D4[i-1];
+        L3[i]=L3[i]-L1[i-1]*U1[i-1];
         L2[i+1]=L2[i+1]-L4[i-1]*U2[i-1];
         L1[i+2]=L1[i+2]-L4[i-1]*U3[i-1];
         U0[i+3]=U0[i+3]-L4[i-1]*D4[i-1];
