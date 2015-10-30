@@ -62,30 +62,34 @@ NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVect
       // process row i
       L1[i-1]=L1[i-1]/U0[i-1];
       U0[i]=U0[i]-L1[i-1]*U1[i-1];
+      
       if (i<n-1) {
         // process row i+1
         L2[i-1]=L2[i-1]/U0[i-1];
         L1[i]=L1[i]-L2[i-1]*U1[i-1];
-        U0[i+1]=U0[i+1]-L2[i-1]*U2[i-1];
+        
         U1[i]=U1[i]-L1[i-1]*U2[i-1];
+        U0[i+1]=U0[i+1]-L2[i-1]*U2[i-1];
       }
       if (i<n-2) {
         L3[i-1]=L3[i-1]/U0[i-1];
         L2[i]=L2[i]-L3[i-1]*U1[i-1];
         L1[i+1]=L1[i+1]-L3[i-1]*U2[i-1];
-        U0[i+2]=U0[i+2]-L3[i-1]*U3[i-1];
-        U1[i+1]=U1[i+1]-L2[i-1]*U3[i-1];
+        
         U2[i]=U2[i]-L1[i-1]*U3[i-1];
+        U1[i+1]=U1[i+1]-L2[i-1]*U3[i-1];
+        U0[i+2]=U0[i+2]-L3[i-1]*U3[i-1];
       }
       if (i<n-3) {
         L4[i-1]=L4[i-1]/U0[i-1];
-        L3[i]=L3[i]-L1[i-1]*U1[i-1];
+        L3[i]=L3[i]-L4[i-1]*U1[i-1];
         L2[i+1]=L2[i+1]-L4[i-1]*U2[i-1];
         L1[i+2]=L1[i+2]-L4[i-1]*U3[i-1];
-        U0[i+3]=U0[i+3]-L4[i-1]*D4[i-1];
-        U1[i+2]=U1[i+2]-L3[i-1]*D4[i-1];
-        U2[i+1]=U2[i+1]-L2[i-1]*D4[i-1];
+        
         U3[i]=U3[i]-L1[i-1]*D4[i-1];
+        U2[i+1]=U2[i+1]-L2[i-1]*D4[i-1];
+        U1[i+2]=U1[i+2]-L3[i-1]*D4[i-1];
+        U0[i+3]=U0[i+3]-L4[i-1]*D4[i-1];
     }
     }
     
@@ -100,7 +104,7 @@ NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVect
     x[n-1]=y[n-1]/U0[n-1];
     x[n-2]=(y[n-2]-U1[n-2]*x[n-1])/U0[n-2];
     x[n-3]=(y[n-3]-U1[n-3]*x[n-2]-U2[n-3]*x[n-1])/U0[n-3];
-    x[n-4]=(y[n-4]-U1[n-4]*x[n-4]-U2[n-4]*x[n-2]-U3[n-4]*x[n-1])/U0[n-4];
+    x[n-4]=(y[n-4]-U1[n-4]*x[n-3]-U2[n-4]*x[n-2]-U3[n-4]*x[n-1])/U0[n-4];
     for (int i=(n-5); i>=0; i--)
     x[i]=x[i]=(y[i]-U1[i]*x[i+1]-U2[i]*x[i+2]-U3[i]*x[i+3]-D4[i]*x[i+4])/U0[i];
     return(x);

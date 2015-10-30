@@ -73,3 +73,18 @@ bandsolve4 <- function(D0data, D1data, D2data, D3data, D4data, bdata) {
     .Call('bandsolve_bandsolve4', PACKAGE = 'bandsolve', D0data, D1data, D2data, D3data, D4data, bdata)
 }
 
+#' @title Fast solver for linears systems involving symmetric band matrix of length k.
+#' @param Ddata Rotated row-wised matrix of dimensions n*k
+#' @param bdata Right hand side of the linear system
+#' @return Solution of the linear system.
+#' @examples n=2000;
+#' D0=runif(n);
+#' D1=-0.2*runif(n-1);
+#' D=cbind(D0,c(D1,0))
+#' b=runif(n)
+#' ref=bandsolveK(D,b)
+#'  @export
+bandsolveK <- function(Ddata, bdata) {
+    .Call('bandsolve_bandsolveK', PACKAGE = 'bandsolve', Ddata, bdata)
+}
+

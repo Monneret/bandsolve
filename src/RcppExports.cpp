@@ -63,3 +63,15 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// bandsolveK
+NumericVector bandsolveK(NumericMatrix Ddata, NumericVector bdata);
+RcppExport SEXP bandsolve_bandsolveK(SEXP DdataSEXP, SEXP bdataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type Ddata(DdataSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
+    __result = Rcpp::wrap(bandsolveK(Ddata, bdata));
+    return __result;
+END_RCPP
+}

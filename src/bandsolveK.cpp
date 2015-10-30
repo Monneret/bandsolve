@@ -11,7 +11,7 @@ using namespace Rcpp;
 //' D=cbind(D0,c(D1,0))
 //' b=runif(n)
 //' ref=bandsolveK(D,b)
-//'  @export
+//' @export
 // [[Rcpp::export]]
 NumericVector bandsolveK(NumericMatrix Ddata, NumericVector bdata) {
     // initialization

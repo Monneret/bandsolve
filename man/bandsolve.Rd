@@ -4,18 +4,10 @@
 \alias{bandsolve}
 \title{Fast solver for linears systems involving symmetric band matrix.}
 \usage{
-bandsolve(D0, D1, D2 = NULL, D3 = NULL, D4 = NULL, b)
+bandsolve(D, b)
 }
 \arguments{
-\item{D0}{Diagonal as a vector of length n.}
-
-\item{D1}{First subdiagonal and superdiagonal as a vector of length n-1.}
-
-\item{D2}{Second subdiagonal and superdiagonal as a vector of length n-2.}
-
-\item{D3}{Third subdiagonal and superdiagonal as a vector of length n-3.}
-
-\item{D4}{Fourth subdiagonal and superdiagonal as a vector of length n-4.}
+\item{D}{Matrice rotationné}
 
 \item{b}{Right hand side of the linear system}
 }
