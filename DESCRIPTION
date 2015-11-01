@@ -1,10 +1,13 @@
 Package: bandsolve
 Type: Package
-Title: What the package does (short line)
+Title: Fast solver for symetric band matrix
 Version: 1.0
 Date: 2015-10-21
-Authors@R: c(person(given = "Gilles", family = "Monneret", role = c("aut", "cre"),email = "gilles.monneret@upmc.fr"),
-   person(given = "Grégory", family = "Nuel", role = "aut")) 
+Authors@R: c(person(given = "Gregory", family = "Nuel", role = "aut"),
+   person(given = "Gilles", family = "Monneret", role = c("aut","cre"),
+     email = "gilles.monneret@upmc.fr"))
+Author: Gregory Nuel [aut]
+  Gilles Monneret [aut, cre]
 Maintainer: Gilles Monneret <gilles.monneret@upmc.fr>
 Description: Fast solver for linear systems involving a symetric band matrix.
 License: GPL (>= 2)

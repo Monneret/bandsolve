@@ -13,7 +13,7 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{bandsolve}
 \packageIndices{bandsolve}
-~~ An overview of how to use the package, including the most important functions ~~
+A C++ implementation of a specific LU decomposition for band matrix. A a symmetric band matrix, b a vector, we either give the matrixes L and U such that A=LU, and also the solution x of the system Ax=b.
 }
 \author{
 \packageAuthor{bandsolve}
@@ -26,8 +26,7 @@ Maintainer: \packageMaintainer{bandsolve}
 
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
+
 }
 \examples{
 n=2000;

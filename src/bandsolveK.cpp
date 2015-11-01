@@ -4,16 +4,16 @@ using namespace Rcpp;
 //' @title Fast solver for linears systems involving symmetric band matrix of length k.
 //' @param Ddata Rotated row-wised matrix of dimensions n*k
 //' @param bdata Right hand side of the linear system
-//' @return Solution of the linear system.
+//' @return List with components with the solution of the linear system and the rotated matrixes L and U.
 //' @examples n=2000;
 //' D0=runif(n);
 //' D1=-0.2*runif(n-1);
 //' D=cbind(D0,c(D1,0))
 //' b=runif(n)
-//' ref=bandsolveK(D,b)
+//' ref=bandsolveK(D,b)$x
 //' @export
 // [[Rcpp::export]]
-NumericVector bandsolveK(NumericMatrix Ddata, NumericVector bdata) {
+List bandsolveK(NumericMatrix Ddata, NumericVector bdata) {
     // initialization
     int m=Ddata.ncol()-1;
     int N=Ddata.nrow();
@@ -67,5 +67,5 @@ NumericVector bandsolveK(NumericMatrix Ddata, NumericVector bdata) {
       x[i]=x[i]/U(i,0);
     }
 
-    return(x);
+    return Rcpp::List::create(Rcpp::Named("x")=x,Rcpp::Named("L")=L,Rcpp::Named("U")=U);
 }

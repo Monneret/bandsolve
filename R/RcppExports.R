@@ -2,64 +2,31 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #' @title Fast solver for linears systems involving symmetric band matrix.
-#' @param D0data Diagonal as a vector of length n.
-#' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
-#' @param bdata Right hand side of the linear system
-#' @return Solution of the linear system.
-#' @examples n=2000;
-#' D0=runif(n);
-#' D1=-0.2*runif(n-1);
-#' b=runif(n)
-#' ref=bandsolve1(D0,D1,b)
 #'  @export
+#'  @rdname bandsolve4
 bandsolve1 <- function(D0data, D1data, bdata) {
     .Call('bandsolve_bandsolve1', PACKAGE = 'bandsolve', D0data, D1data, bdata)
 }
 
-#' @title Fast solver for linears systems involving symmetric band matrix.
-#' @param D0data Diagonal as a vector of length n.
-#' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
-#' @param D2Data Second subdiagonal and superdiagonal as a vector of length n-2.
-#' @param bdata Right hand side of the linear system
-#' @return Solution of the linear system.
-#' @examples n=2000;
-#' D0=runif(n);
-#' D1=-0.2*runif(n-1);
-#' D2=0.4*runif(n-2);
-#' b=runif(n)
-#' ref=bandsolve2(D0,D1,D2,b)
 #'  @export
+#'  @rdname bandsolve4
 bandsolve2 <- function(D0data, D1data, D2data, bdata) {
     .Call('bandsolve_bandsolve2', PACKAGE = 'bandsolve', D0data, D1data, D2data, bdata)
 }
 
-#' @title Fast solver for linears systems involving symmetric band matrix.
-#' @param D0data Diagonal as a vector of length n.
-#' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
-#' @param D2Data Second subdiagonal and superdiagonal as a vector of length n-2.
-#' @param D3Data Third subdiagonal and superdiagonal as a vector of length n-3.
-#' @param bdata Right hand side of the linear system
-#' @return Solution of the linear system.
-#' @examples n=2000;
-#' D0=runif(n);
-#' D1=-0.2*runif(n-1);
-#' D2=0.4*runif(n-2);
-#' D3=-0.1*runif(n-3);
-#' b=runif(n)
-#' ref=bandsolve3(D0,D1,D2,D3,b)
 #'  @export
+#'  @rdname bandsolve4
 bandsolve3 <- function(D0data, D1data, D2data, D3data, bdata) {
     .Call('bandsolve_bandsolve3', PACKAGE = 'bandsolve', D0data, D1data, D2data, D3data, bdata)
 }
 
-#' @title Fast solver for linears systems involving symmetric band matrix.
 #' @param D0data Diagonal as a vector of length n.
 #' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
 #' @param D2Data Second subdiagonal and superdiagonal as a vector of length n-2.
 #' @param D3Data Third subdiagonal and superdiagonal as a vector of length n-3.
 #' @param D4Data Fourth subdiagonal and superdiagonal as a vector of length n-4.
 #' @param bdata Right hand side of the linear system
-#' @return Solution of the linear system.
+#' @return List with components with the solution of the linear system and sub and super diagonals of L and U
 #' @examples n=2000;
 #' D0=runif(n);
 #' D1=-0.2*runif(n-1);
@@ -67,7 +34,7 @@ bandsolve3 <- function(D0data, D1data, D2data, D3data, bdata) {
 #' D3=-0.1*runif(n-3);
 #' D4=0.3*runif(n-4);
 #' b=runif(n)
-#' ref=bandsolve4(D0,D1,D2,D3,D4,b)
+#' ref=bandsolve4(D0,D1,D2,D3,D4,b)$x
 #'  @export
 bandsolve4 <- function(D0data, D1data, D2data, D3data, D4data, bdata) {
     .Call('bandsolve_bandsolve4', PACKAGE = 'bandsolve', D0data, D1data, D2data, D3data, D4data, bdata)
@@ -76,14 +43,14 @@ bandsolve4 <- function(D0data, D1data, D2data, D3data, D4data, bdata) {
 #' @title Fast solver for linears systems involving symmetric band matrix of length k.
 #' @param Ddata Rotated row-wised matrix of dimensions n*k
 #' @param bdata Right hand side of the linear system
-#' @return Solution of the linear system.
+#' @return List with components with the solution of the linear system and the rotated matrixes L and U.
 #' @examples n=2000;
 #' D0=runif(n);
 #' D1=-0.2*runif(n-1);
 #' D=cbind(D0,c(D1,0))
 #' b=runif(n)
-#' ref=bandsolveK(D,b)
-#'  @export
+#' ref=bandsolveK(D,b)$x
+#' @export
 bandsolveK <- function(Ddata, bdata) {
     .Call('bandsolve_bandsolveK', PACKAGE = 'bandsolve', Ddata, bdata)
 }

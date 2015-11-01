@@ -12,7 +12,7 @@ bandsolveK(Ddata, bdata)
 \item{bdata}{Right hand side of the linear system}
 }
 \value{
-Solution of the linear system.
+List with components as solution of the linear system and matrixes L and U (rotated).
 }
 \description{
 Fast solver for linears systems involving symmetric band matrix of length k.
@@ -23,6 +23,6 @@ D0=runif(n);
 D1=-0.2*runif(n-1);
 D=cbind(D0,c(D1,0))
 b=runif(n)
-ref=bandsolveK(D,b)
+ref=bandsolveK(D,b)$x
 }
 

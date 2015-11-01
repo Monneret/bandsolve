@@ -2,18 +2,10 @@
 using namespace Rcpp;
 
 //' @title Fast solver for linears systems involving symmetric band matrix.
-//' @param D0data Diagonal as a vector of length n.
-//' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
-//' @param bdata Right hand side of the linear system
-//' @return Solution of the linear system.
-//' @examples n=2000;
-//' D0=runif(n);
-//' D1=-0.2*runif(n-1);
-//' b=runif(n)
-//' ref=bandsolve1(D0,D1,b)
 //'  @export
+//'  @rdname bandsolve4
 // [[Rcpp::export]]
-NumericVector bandsolve1(NumericVector D0data, NumericVector D1data, NumericVector bdata) {
+Rcpp::List bandsolve1(NumericVector D0data, NumericVector D1data, NumericVector bdata) {
     if (D0data.size()!=(D1data.size()+1))
     Rcpp::stop("we must have length(D0)=length(D1)+1");
     if (D0data.size()!=bdata.size())
@@ -45,5 +37,5 @@ NumericVector bandsolve1(NumericVector D0data, NumericVector D1data, NumericVect
     x[n-1]=y[n-1]/U0[n-1];
     for (int i=(n-1); i>0; i--)
     x[i-1]=(y[i-1]-D1[i-1]*x[i])/U0[i-1];
-    return(x);
+    return Rcpp::List::create(Rcpp::Named("x")=x,Rcpp::Named("L1")=L1,Rcpp::Named("U0")=U0);
 }

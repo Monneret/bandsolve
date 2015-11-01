@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // bandsolve1
-NumericVector bandsolve1(NumericVector D0data, NumericVector D1data, NumericVector bdata);
+Rcpp::List bandsolve1(NumericVector D0data, NumericVector D1data, NumericVector bdata);
 RcppExport SEXP bandsolve_bandsolve1(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP bdataSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
@@ -19,7 +19,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // bandsolve2
-NumericVector bandsolve2(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector bdata);
+Rcpp::List bandsolve2(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector bdata);
 RcppExport SEXP bandsolve_bandsolve2(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP bdataSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
@@ -33,7 +33,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // bandsolve3
-NumericVector bandsolve3(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector bdata);
+List bandsolve3(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector bdata);
 RcppExport SEXP bandsolve_bandsolve3(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP D3dataSEXP, SEXP bdataSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
@@ -48,7 +48,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // bandsolve4
-NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector D4data, NumericVector bdata);
+List bandsolve4(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector D4data, NumericVector bdata);
 RcppExport SEXP bandsolve_bandsolve4(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP D3dataSEXP, SEXP D4dataSEXP, SEXP bdataSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
@@ -64,7 +64,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // bandsolveK
-NumericVector bandsolveK(NumericMatrix Ddata, NumericVector bdata);
+List bandsolveK(NumericMatrix Ddata, NumericVector bdata);
 RcppExport SEXP bandsolve_bandsolveK(SEXP DdataSEXP, SEXP bdataSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;

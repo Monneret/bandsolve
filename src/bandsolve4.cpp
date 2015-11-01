@@ -1,14 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' @title Fast solver for linears systems involving symmetric band matrix.
 //' @param D0data Diagonal as a vector of length n.
 //' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
 //' @param D2Data Second subdiagonal and superdiagonal as a vector of length n-2.
 //' @param D3Data Third subdiagonal and superdiagonal as a vector of length n-3.
 //' @param D4Data Fourth subdiagonal and superdiagonal as a vector of length n-4.
 //' @param bdata Right hand side of the linear system
-//' @return Solution of the linear system.
+//' @return List with components with the solution of the linear system and sub and super diagonals of L and U
 //' @examples n=2000;
 //' D0=runif(n);
 //' D1=-0.2*runif(n-1);
@@ -16,10 +15,10 @@ using namespace Rcpp;
 //' D3=-0.1*runif(n-3);
 //' D4=0.3*runif(n-4);
 //' b=runif(n)
-//' ref=bandsolve4(D0,D1,D2,D3,D4,b)
+//' ref=bandsolve4(D0,D1,D2,D3,D4,b)$x
 //'  @export
 // [[Rcpp::export]]
-NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector D4data, NumericVector bdata) {
+List bandsolve4(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector D4data, NumericVector bdata) {
     if (D0data.size()!=(D4data.size()+4))
     stop("we must have length(D0)=length(D3)+4"); 
     if (D0data.size()!=(D3data.size()+3))
@@ -107,5 +106,5 @@ NumericVector bandsolve4(NumericVector D0data, NumericVector D1data, NumericVect
     x[n-4]=(y[n-4]-U1[n-4]*x[n-3]-U2[n-4]*x[n-2]-U3[n-4]*x[n-1])/U0[n-4];
     for (int i=(n-5); i>=0; i--)
     x[i]=x[i]=(y[i]-U1[i]*x[i+1]-U2[i]*x[i+2]-U3[i]*x[i+3]-D4[i]*x[i+4])/U0[i];
-    return(x);
+    return Rcpp::List::create(Rcpp::Named("x")=x,Rcpp::Named("L1")=L1,Rcpp::Named("L2")=L2,Rcpp::Named("L3")=L3,Rcpp::Named("L4")=L4,Rcpp::Named("U0")=U0,Rcpp::Named("U1")=U1,Rcpp::Named("U2")=U2,Rcpp::Named("U3")=U3);
 }

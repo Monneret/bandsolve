@@ -1,21 +1,10 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' @title Fast solver for linears systems involving symmetric band matrix.
-//' @param D0data Diagonal as a vector of length n.
-//' @param D1Data First subdiagonal and superdiagonal as a vector of length n-1.
-//' @param D2Data Second subdiagonal and superdiagonal as a vector of length n-2.
-//' @param bdata Right hand side of the linear system
-//' @return Solution of the linear system.
-//' @examples n=2000;
-//' D0=runif(n);
-//' D1=-0.2*runif(n-1);
-//' D2=0.4*runif(n-2);
-//' b=runif(n)
-//' ref=bandsolve2(D0,D1,D2,b)
 //'  @export
+//'  @rdname bandsolve4
 // [[Rcpp::export]]
-NumericVector bandsolve2(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector bdata) {
+Rcpp::List bandsolve2(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector bdata) {
     if (D0data.size()!=(D2data.size()+2))
     Rcpp::stop("we must have length(D0)=length(D2)+2");
     if (D0data.size()!=(D1data.size()+1))
@@ -66,5 +55,5 @@ NumericVector bandsolve2(NumericVector D0data, NumericVector D1data, NumericVect
     x[n-2]=(y[n-2]-U1[n-2]*x[n-1])/U0[n-2];
     for (int i=(n-3); i>=0; i--)
       x[i]=(y[i]-U1[i]*x[i+1]-D2[i]*x[i+2])/U0[i];
-    return(x);
+    return Rcpp::List::create(Rcpp::Named("x")=x,Rcpp::Named("L1")=L1,Rcpp::Named("L2")=L2,Rcpp::Named("U0")=U0,Rcpp::Named("U1")=U1);
 }

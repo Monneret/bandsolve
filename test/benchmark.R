@@ -6,7 +6,7 @@ require(limSolve)
 
 
 set.seed(421)
-n=2000;
+n=20;
 D0=rep(1,n)
 D1=rep(-0.5,n-1)
 b=rnorm(n)
@@ -28,7 +28,7 @@ r=microbenchmark(SOLVE=solve(A,b),
                  PRA=trisolve(D0,D1,D1,b),
                  TRIDIAG=Solve.tridiag(D1,D0,D1,b)[,1],
                  BANDED=Solve.banded(rotated.A,nup=1,nlow=1,b)[,1],
-                 FBS=bandsolve(D0,D1,b=b),times=100)
+                 FBS=bandsolve(t(rotated.A)[,-1],b=b)$x,times=100)
 boxplot(r)
 
 tmp=sapply(split(r$time,r$expr),mean)
@@ -55,7 +55,7 @@ rotated.A=rbind(c(0,D1),D0,c(D1,0))
 
 r=microbenchmark(SPAM.SOLVE=solve(A,b),
                  BANDED=Solve.banded(rotated.A,nup=1,nlow=1,b)[,1],
-                 FBS=bandsolve(D0,D1,b=b),times=100)
+                 FBS=bandsolve(t(rotated.A)[,-1],b=b)$x,times=100)
 boxplot(r)
 
 tmp=sapply(split(r$time,r$expr),mean)
