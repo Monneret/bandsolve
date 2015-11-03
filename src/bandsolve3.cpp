@@ -6,7 +6,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 List bandsolve3(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector bdata) {
     if (D0data.size()!=(D3data.size()+3))
-    stop("we must have length(D0)=length(D3)+3"); 
+    Rcpp::stop("we must have length(D0)=length(D3)+3"); 
     if (D0data.size()!=(D2data.size()+2))
     Rcpp::stop("we must have length(D0)=length(D2)+2");
     if (D0data.size()!=(D1data.size()+1))

@@ -1,7 +1,7 @@
 Package: bandsolve
 Type: Package
 Title: Fast solver for symetric band matrix
-Version: 1.0
+Version: 1.0.0.9001
 Date: 2015-10-21
 Authors@R: c(person(given = "Gregory", family = "Nuel", role = "aut"),
    person(given = "Gilles", family = "Monneret", role = c("aut","cre"),
