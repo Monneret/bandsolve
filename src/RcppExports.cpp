@@ -5,73 +5,42 @@
 
 using namespace Rcpp;
 
-// bandsolve1
-Rcpp::List bandsolve1(NumericVector D0data, NumericVector D1data, NumericVector bdata);
-RcppExport SEXP bandsolve_bandsolve1(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP bdataSEXP) {
+// bandsolve
+List bandsolve(NumericMatrix D, int l, int u, NumericVector b, bool sym);
+RcppExport SEXP bandsolve_bandsolve(SEXP DSEXP, SEXP lSEXP, SEXP uSEXP, SEXP bSEXP, SEXP symSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericVector >::type D0data(D0dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D1data(D1dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
-    __result = Rcpp::wrap(bandsolve1(D0data, D1data, bdata));
+    Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
+    Rcpp::traits::input_parameter< int >::type l(lSEXP);
+    Rcpp::traits::input_parameter< int >::type u(uSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
+    Rcpp::traits::input_parameter< bool >::type sym(symSEXP);
+    __result = Rcpp::wrap(bandsolve(D, l, u, b, sym));
     return __result;
 END_RCPP
 }
-// bandsolve2
-Rcpp::List bandsolve2(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector bdata);
-RcppExport SEXP bandsolve_bandsolve2(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP bdataSEXP) {
+// LDL
+List LDL(NumericMatrix D);
+RcppExport SEXP bandsolve_LDL(SEXP DSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericVector >::type D0data(D0dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D1data(D1dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D2data(D2dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
-    __result = Rcpp::wrap(bandsolve2(D0data, D1data, D2data, bdata));
+    Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
+    __result = Rcpp::wrap(LDL(D));
     return __result;
 END_RCPP
 }
-// bandsolve3
-List bandsolve3(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector bdata);
-RcppExport SEXP bandsolve_bandsolve3(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP D3dataSEXP, SEXP bdataSEXP) {
+// LDU
+List LDU(NumericMatrix D, int l, int u);
+RcppExport SEXP bandsolve_LDU(SEXP DSEXP, SEXP lSEXP, SEXP uSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericVector >::type D0data(D0dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D1data(D1dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D2data(D2dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D3data(D3dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
-    __result = Rcpp::wrap(bandsolve3(D0data, D1data, D2data, D3data, bdata));
-    return __result;
-END_RCPP
-}
-// bandsolve4
-List bandsolve4(NumericVector D0data, NumericVector D1data, NumericVector D2data, NumericVector D3data, NumericVector D4data, NumericVector bdata);
-RcppExport SEXP bandsolve_bandsolve4(SEXP D0dataSEXP, SEXP D1dataSEXP, SEXP D2dataSEXP, SEXP D3dataSEXP, SEXP D4dataSEXP, SEXP bdataSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericVector >::type D0data(D0dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D1data(D1dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D2data(D2dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D3data(D3dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type D4data(D4dataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
-    __result = Rcpp::wrap(bandsolve4(D0data, D1data, D2data, D3data, D4data, bdata));
-    return __result;
-END_RCPP
-}
-// bandsolveK
-List bandsolveK(NumericMatrix Ddata, NumericVector bdata);
-RcppExport SEXP bandsolve_bandsolveK(SEXP DdataSEXP, SEXP bdataSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericMatrix >::type Ddata(DdataSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdata(bdataSEXP);
-    __result = Rcpp::wrap(bandsolveK(Ddata, bdata));
+    Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
+    Rcpp::traits::input_parameter< int >::type l(lSEXP);
+    Rcpp::traits::input_parameter< int >::type u(uSEXP);
+    __result = Rcpp::wrap(LDU(D, l, u));
     return __result;
 END_RCPP
 }

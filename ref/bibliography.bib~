@@ -1,0 +1,66 @@
+@article{eilers2003perfect,
+  title={A perfect smoother},
+  author={Eilers, Paul HC},
+  journal={Analytical chemistry},
+  volume={75},
+  number={14},
+  pages={3631--3636},
+  year={2003},
+  publisher={ACS Publications}
+}
+
+@book{golub2012matrix,
+  title={Matrix computations},
+  author={Golub, Gene H and Van Loan, Charles F},
+  volume={3},
+  year={2012},
+  publisher={JHU Press}
+}
+
+@article{o1980block,
+  title={The block conjugate gradient algorithm and related methods},
+  author={O'Leary, Dianne P},
+  journal={Linear algebra and its applications},
+  volume={29},
+  pages={293--322},
+  year={1980},
+  publisher={Elsevier}
+}
+
+@article{suhl1993fast,
+  title={A fast LU update for linear programming},
+  author={Suhl, Leena M and Suhl, Uwe H},
+  journal={Annals of Operations Research},
+  volume={43},
+  number={1},
+  pages={33--47},
+  year={1993},
+  publisher={Springer}
+}
+
+@article{soetaert2009limsolve,
+  title={limSolve: Solving linear inverse models},
+  author={Soetaert, Karline and Van den Meersche, Karel and van Oevelen, Dick},
+  journal={R package version},
+  volume={1},
+  number={1},
+  year={2009}
+}
+
+@misc{borchers2015pracma,
+  title={Pracma: practical numerical math functions. R package version 1.8. 3},
+  author={Borchers, Hans Werner},
+  year={2015}
+}
+
+@article{furrer2010spam,
+  title={spam: A sparse matrix R package with emphasis on MCMC methods for Gaussian Markov random fields},
+  author={Furrer, Reinhard and Sain, Stephan R and others},
+  journal={Journal of Statistical Software},
+  volume={36},
+  number={10},
+  pages={1--25},
+  year={2010},
+  publisher={American Statistical Association}
+}
+

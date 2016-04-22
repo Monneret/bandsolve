@@ -15,7 +15,7 @@ refbandsolve5=function(D0,D1,D2,D3,D4,D5,b) {
   return(list(A=A,x=x))
 }
 
-n=1000;
+n=10;
 D0=runif(n);
 D1=-2*runif(n-1);
 D2=3*runif(n-2);
@@ -25,44 +25,18 @@ D5=runif(n-5);
 b=runif(n);
 D=cbind(D0,c(D1,0),c(D2,0,0),c(D3,0,0,0),c(D4,0,0,0,0),c(D5,0,0,0,0,0))
 
-
-ref1=refbandsolve5(D0,D1,D2*0,D3*0,D4*0,D5*0,b);
-ref2=refbandsolve5(D0,D1,D2,D3*0,D4*0,D5*0,b);
-ref3=refbandsolve5(D0,D1,D2,D3,D4*0,D5*0,b);
-ref4=refbandsolve5(D0,D1,D2,D3,D4,D5*0,b);
 ref5=refbandsolve5(D0,D1,D2,D3,D4,D5,b);
-ref=list(ref1,ref2,ref3,ref4,ref5);
-res=list()
-
-par(mfrow=c(2,3))
-for (i in 1:5){
-  res[[length(res)+1]]=bandsolve(D=D[,1:(i+1)],b=b)
-  plot(res[[i]]$x,ref[[i]]$x); abline(0,1)
-}
+res5=bandsolve(D=D,l=5,u=5,b=b,sym=TRUE)
+plot(res5$x,ref5$x,xlab="Bandsolve",ylab="Solve"); abline(0,1)
 title(main="Consistency of solutions")
 
-par(mfrow=c(2,3))
-for (i in 1:4){
-  L=matrix(0,n,n)
-  diag(L)=1
-  U=matrix(0,n,n)
-  diag(U[-c(n:(n-i+1)),-c(1:i)])=D[-c(n:(n-i+1)),i+1]
-  for (j in 1:i) {
-    diag(L[-c(1:j),-c(n:(n-j+1))])=res[[i]][[j+1]];
-    if (j>1) diag(U[-c(n:(n-j+2)),-c(1:(j-1))])=res[[i]][[j+i+1]] else diag(U)=res[[i]][[j+i+1]];
-  }
-  Aret=L%*%U
-  plot(diag(Aret),diag(ref[[i]]$A)); abline(0,1)
-}
 
-L=matrix(0,n,n);
-diag(L)=1;
-U=matrix(0,n,n);
-diag(U[-c(n:(n-4)),-c(1:5)])=D5;
-for (j in 1:5) {
-  diag(L[-c(1:j),-c(n:(n-j+1))])=res[[5]]$L[-c(n:(n-j+1)),j+1];
-  if (j>1) diag(U[-c(n:(n-j+2)),-c(1:(j-1))])=res[[5]]$U[-c(n:(n-j+2)),j] else diag(U)=res[[5]]$U[,j];
-}
-Aret=L%*%U;
-plot(diag(Aret),diag(ref[[5]]$A)); abline(0,1);
+
+Ures=rot.as.mat(D,u=5,l=0);
+Dres=diag(diag(Ures));
+Lres=t(Ures);
+diag(Ures)=1;
+diag(Lres)=1;
+Aret=Lres%*%Dres%*%Ures;
+plot(diag(Aret)[1:1000],diag(ref5$A)[1:1000],xlab="Bandsolve",ylab="Solve"); abline(0,1);
 title(main="Consistency of decompositions")

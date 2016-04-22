@@ -1,15 +1,17 @@
 Package: bandsolve
 Type: Package
 Title: Fast solver for symetric band matrix
-Version: 1.0.0.9001
-Date: 2015-10-21
+Version: 1.1.0.9000
+Date: 2016-03-10
 Authors@R: c(person(given = "Gregory", family = "Nuel", role = "aut"),
    person(given = "Gilles", family = "Monneret", role = c("aut","cre"),
      email = "gilles.monneret@upmc.fr"))
 Author: Gregory Nuel [aut]
-  Gilles Monneret [aut, cre]
+    Gilles Monneret [aut, cre]
 Maintainer: Gilles Monneret <gilles.monneret@upmc.fr>
 Description: Fast solver for linear systems involving a symetric band matrix.
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.1)
+Imports:
+    Rcpp (>= 0.12.1)
 LinkingTo: Rcpp
+RoxygenNote: 5.0.1
