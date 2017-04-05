@@ -3,7 +3,7 @@
 #include "LDL.h"
 using namespace Rcpp;
 
-//' @description Fast solver for linears systems involving band matrix.
+//' @description Fast inplace solver for linears systems involving band matrix.
 //' @title bandsolve
 //' @param D Rotated row-wised matrix.
 //' @name bandsolve
@@ -18,10 +18,8 @@ using namespace Rcpp;
 //' @export
 
 // [[Rcpp::export]]
-List bandsolve(NumericMatrix D, int l, int u, NumericVector b,bool sym=true) {
-      int n = D.nrow();
-      
-  if (sym==true) { //LDL case
+List bandsolve(NumericMatrix D, NumericVector b) {
+    int n = D.nrow();
     LDL(D);
     int K = D.ncol()-1;
     
@@ -40,8 +38,7 @@ List bandsolve(NumericMatrix D, int l, int u, NumericVector b,bool sym=true) {
     for (int j=1; j<=jmax; j++)
     b[i-1]-=D(i-1,j)*b[i+j-1];
   }
-  }
-  else
+/*  else
   { // LDU case
     LDU(D,l,u);
     
@@ -57,7 +54,7 @@ List bandsolve(NumericMatrix D, int l, int u, NumericVector b,bool sym=true) {
     b[i-1]-=D(i-1,k-i+l)*b[k-1]; //b_i-=sum_i+1^i+u Uik bk
     
   }
-}
+  }*/
   
   return Rcpp::List::create(Rcpp::Named("D")=D,Rcpp::Named("x")=b);
 }

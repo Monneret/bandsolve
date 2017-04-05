@@ -2,11 +2,7 @@
 % Please edit documentation in R/as.rotated.R
 \name{as.rotated}
 \alias{as.rotated}
-<<<<<<< HEAD
 \title{as.rotated}
-=======
-\title{Rotate a band matrix to get the rotated row-wised matrix associated.}
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 \usage{
 as.rotated(M, l = 0, u = 0)
 }
@@ -20,12 +16,9 @@ as.rotated(M, l = 0, u = 0)
 \value{
 Rotated matrix.
 }
-<<<<<<< HEAD
 \description{
 Rotate a band matrix to get the rotated row-wised matrix associated.
 }
-=======
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 \examples{
 n=2000;
 A=diag(4)

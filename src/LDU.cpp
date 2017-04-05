@@ -15,7 +15,6 @@ using namespace Rcpp;
 //' D3=runif(n-2)
 //' D=cbind(c(D0,0),D1,c(D2,0),c(D3,0,0))
 //' res=LDU(D,l=1,u=2)
-//' @export
 
 // [[Rcpp::export]]
 List LDU(NumericMatrix D, int l,int u) {

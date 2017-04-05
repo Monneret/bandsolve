@@ -1,12 +1,9 @@
 #' @useDynLib bandsolve
 #' @import Rcpp
 #' @export
-<<<<<<< HEAD
 #' @description Rotate a band matrix to get the rotated row-wised matrix associated.
 #' @title as.rotated
-=======
 #' @title Rotate a band matrix to get the rotated row-wised matrix associated.
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 #' @param M Band square matrix.
 #' @param u upper bandwith.
 #' @param l lower bandwith.

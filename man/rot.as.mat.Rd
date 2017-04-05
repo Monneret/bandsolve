@@ -2,11 +2,7 @@
 % Please edit documentation in R/rot.as.mat.R
 \name{rot.as.mat}
 \alias{rot.as.mat}
-<<<<<<< HEAD
 \title{rot.as.mat}
-=======
-\title{Get back a square matrix based on his rotated row-wised version.}
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 \usage{
 rot.as.mat(R, l = 0, u = 0)
 }
@@ -20,12 +16,9 @@ rot.as.mat(R, l = 0, u = 0)
 \value{
 Band square matrix.
 }
-<<<<<<< HEAD
 \description{
 Get back a square matrix based on his rotated row-wised version.
 }
-=======
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 \examples{
 n=2000;
 D0=runif(n);
@@ -33,9 +26,6 @@ D1=-0.2*runif(n-1);
 D2=0.3*runif(n-2);
 ref=rot.as.mat(cbind(D0,c(D1,0),c(D2,0,0)),l=0,u=2)
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 }
 

@@ -90,3 +90,25 @@ tmp/tmp["FBS"]
 # boxplot(r3,main="bandsolve3")
 # boxplot(r4,main="bandsolve4")
 # par(mfrow=c(1,1))
+
+### Bandwith: complexity
+require(MASS)
+time=vector(mode="numeric",length=51)
+for (bd in (1:50)){
+  A=mvrnorm(200,rep(0,bd+1),Sigma=diag(bd+1))
+  A=cbind(A[,(bd+1):2],A)
+  b=rnorm(200)
+  time[bd+1]=mean(microbenchmark(FBS=bandsolve(A,l=bd,u=bd,b=b)$x,times=100)$time)/1000
+}
+plot(time)
+lines((1:50)^2,col = "red",add=TRUE)
+
+### Size of matrix: complexity
+time=vector(mode="numeric",length=200)
+for (sz in (11:210)){
+  A=mvrnorm(sz,rep(0,3),Sigma=diag(3))
+  A=cbind(A[,3:2],A)
+  b=rnorm(sz)
+  time[sz-10]=mean(microbenchmark(FBS=bandsolve(A,l=bd,u=bd,b=b)$x,times=100)$time)/1000
+}
+plot(time)

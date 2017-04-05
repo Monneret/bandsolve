@@ -2,17 +2,8 @@
 % Please edit documentation in R/bandsolve.R
 \docType{package}
 \name{bandsolve-package}
-<<<<<<< HEAD
-\title{\code{\link{bandsolve}} and \code{\link{LDU}} and \code{\link{LDL}}}
+\title{\code{\link{bandsolve}},\code{\link{LDU}},\code{\link{LDL}},\code{\link{rot.as.mat}},\code{\link{as.rotated}}}
 \description{
-\code{\link{bandsolve}} and \code{\link{LDU}} and \code{\link{LDL}}
-=======
-\alias{bandsolve}
-\alias{bandsolve-package}
-\title{Generate R documentation from inline comments.}
-\description{
-Roxygen2 allows you to write documentation in comment blocks co-located
-with code.
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
+\code{\link{bandsolve}},\code{\link{LDU}},\code{\link{LDL}},\code{\link{rot.as.mat}},\code{\link{as.rotated}}
 }
 

@@ -1,12 +1,9 @@
 #' @useDynLib bandsolve
 #' @export
-<<<<<<< HEAD
 #' 
 #' @description Get back a square matrix based on his rotated row-wised version.
 #' @title rot.as.mat
-=======
 #' @title Get back a square matrix based on his rotated row-wised version.
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 #' @param R Rotated matrix.
 #' @param u upper bandwith.
 #' @param l lower bandwith.
@@ -16,12 +13,8 @@
 #' D1=-0.2*runif(n-1);
 #' D2=0.3*runif(n-2);
 #' ref=rot.as.mat(cbind(D0,c(D1,0),c(D2,0,0)),l=0,u=2)
-<<<<<<< HEAD
-#'
-=======
 #' 
 #' 
->>>>>>> 2b739f4834cb5b76dc34ce5b9deb93e350d03fcd
 
 rot.as.mat <- function(R,l=0,u=0){
   N=nrow(R)
