@@ -3,22 +3,6 @@
 #include "LDL.h"
 using namespace Rcpp;
 
-<<<<<<< HEAD:src/fastbandsolve.cpp
-=======
-//' @description Fast inplace solver for linears systems involving band matrix.
-//' @title fastbandsolve
-//' @param D Rotated row-wised matrix.
-//' @name bandsolve
-//' @param b Right hand side of the linear system
-//' @return List with components with the solution of the linear system and the rotated matrixes L and U.
-//' @examples n=2000;
-//' D0=3+runif(n);
-//' D1=-0.2*runif(n-1);
-//' D=cbind(D0,c(D1,0))
-//' b=runif(n)
-//' sol=fastbandsolve(D,b,l=1,u=0)
-
->>>>>>> 646e99269176997e1649191c218d72003b90c67e:src/fastbandsolve.cpp
 // [[Rcpp::export]]
 List fastbandsolve(NumericMatrix D, NumericVector b) {
     int n = D.nrow();
