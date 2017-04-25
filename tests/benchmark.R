@@ -27,7 +27,7 @@ r=microbenchmark(SOLVE=solve(A,b),
                  PRA=trisolve(D0,D1,D1,b),
                  TRIDIAG=Solve.tridiag(D1,D0,D1,b)[,1],
                  BANDED=Solve.banded(rotated.A,nup=1,nlow=1,b)[,1],
-                 FBS=bandsolve(t(rotated.A)[,-1],l=1,u=1,b=b,sym=TRUE)$x,times=100)
+                 FBS=bandsolve(t(rotated.A)[,-1],b=b,inplace=TRUE)$x,times=100)
 boxplot(r)
 
 tmp=sapply(split(r$time,r$expr),mean)
@@ -54,7 +54,7 @@ rotated.Afbs=cbind(c(U1,0),D0,c(U1,0))
 
 r=microbenchmark(SPAM.SOLVE=solve(A,b),
                  BANDED=Solve.banded(rotated.A,nup=1,nlow=1,b)[,1],
-                 FBS=bandsolve(rotated.Afbs,l=1,u=1,b=b)$x,times=100) #FBS1=bandsolve1(D0data=D0, D1data=D1, bdata=b)$x
+                 FBS=bandsolve(rotated.Afbs,b=b)$x,times=100) #FBS1=bandsolve1(D0data=D0, D1data=D1, bdata=b)$x
 
 boxplot(r)
 
@@ -98,7 +98,7 @@ for (bd in (1:50)){
   A=mvrnorm(200,rep(0,bd+1),Sigma=diag(bd+1))
   A=cbind(A[,(bd+1):2],A)
   b=rnorm(200)
-  time[bd+1]=mean(microbenchmark(FBS=bandsolve(A,l=bd,u=bd,b=b)$x,times=100)$time)/1000
+  time[bd+1]=mean(microbenchmark(FBS=bandsolve(A,b=b)$x,times=100)$time)/1000
 }
 plot(time)
 lines((1:50)^2,col = "red",add=TRUE)
@@ -109,6 +109,6 @@ for (sz in (11:210)){
   A=mvrnorm(sz,rep(0,3),Sigma=diag(3))
   A=cbind(A[,3:2],A)
   b=rnorm(sz)
-  time[sz-10]=mean(microbenchmark(FBS=bandsolve(A,l=bd,u=bd,b=b)$x,times=100)$time)/1000
+  time[sz-10]=mean(microbenchmark(FBS=bandsolve(A,b=b)$x,times=100)$time)/1000
 }
 plot(time)

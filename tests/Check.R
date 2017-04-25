@@ -26,7 +26,7 @@ b=runif(n);
 D=cbind(D0,c(D1,0),c(D2,0,0),c(D3,0,0,0),c(D4,0,0,0,0),c(D5,0,0,0,0,0))
 
 ref5=refbandsolve5(D0,D1,D2,D3,D4,D5,b);
-res5=bandsolve(D=D,l=5,u=5,b=b,sym=TRUE)
+res5=bandsolve(A=D,b=b)
 plot(res5$x,ref5$x,xlab="Bandsolve",ylab="Solve"); abline(0,1)
 title(main="Consistency of solutions")
 
