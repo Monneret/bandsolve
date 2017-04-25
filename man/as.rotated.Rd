@@ -4,14 +4,12 @@
 \alias{as.rotated}
 \title{as.rotated}
 \usage{
-as.rotated(M, l = 0, u = 0)
+as.rotated(M, l = 0)
 }
 \arguments{
 \item{M}{Band square matrix.}
 
 \item{l}{lower bandwith.}
-
-\item{u}{upper bandwith.}
 }
 \value{
 Rotated matrix.
@@ -23,7 +21,7 @@ Rotate a band matrix to get the rotated row-wised matrix associated.
 n=2000;
 A=diag(4)
 A[2,3]=2
-ref=as.rotated(A,l=0,u=1)
+ref=as.rotated(A,l=1)
 
 }
 

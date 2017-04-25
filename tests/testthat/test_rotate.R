@@ -11,5 +11,5 @@ D[2:n,1:(n-1)]=diag(n-1);
 D[1,1]=D[n,n]=1
 D[1,2]=D[2,1]=D[n,n-1]=D[n-1,n]=0
 test_that("Rotating matices...", {
-  expect_equal(rot.as.mat(A,l=1,u=1),D)
+  expect_equal(rot.as.mat(A,l=1),D)
 })

@@ -4,7 +4,7 @@
 using namespace Rcpp;
 
 //' @description Fast inplace solver for linears systems involving band matrix.
-//' @title bandsolve
+//' @title fastbandsolve
 //' @param D Rotated row-wised matrix.
 //' @name bandsolve
 //' @param b Right hand side of the linear system
@@ -14,11 +14,10 @@ using namespace Rcpp;
 //' D1=-0.2*runif(n-1);
 //' D=cbind(D0,c(D1,0))
 //' b=runif(n)
-//' sol=bandsolve(D,b,l=1,u=0)
-//' @export
+//' sol=fastbandsolve(D,b,l=1,u=0)
 
 // [[Rcpp::export]]
-List bandsolve(NumericMatrix D, NumericVector b) {
+List fastbandsolve(NumericMatrix D, NumericVector b) {
     int n = D.nrow();
     LDL(D);
     int K = D.ncol()-1;
