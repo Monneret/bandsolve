@@ -5,27 +5,15 @@
 
 using namespace Rcpp;
 
-// fastbandsolve
-List fastbandsolve(NumericMatrix D, NumericVector b);
-RcppExport SEXP bandsolve_fastbandsolve(SEXP DSEXP, SEXP bSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
-    rcpp_result_gen = Rcpp::wrap(fastbandsolve(D, b));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fastbandsolveMatrix
-List fastbandsolveMatrix(NumericMatrix D, NumericMatrix B);
-RcppExport SEXP bandsolve_fastbandsolveMatrix(SEXP DSEXP, SEXP BSEXP) {
+// bandsolve_cpp
+List bandsolve_cpp(NumericMatrix D, NumericMatrix B);
+RcppExport SEXP bandsolve_bandsolve_cpp(SEXP DSEXP, SEXP BSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type B(BSEXP);
-    rcpp_result_gen = Rcpp::wrap(fastbandsolveMatrix(D, B));
+    rcpp_result_gen = Rcpp::wrap(bandsolve_cpp(D, B));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -37,19 +25,6 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
     rcpp_result_gen = Rcpp::wrap(LDL(D));
-    return rcpp_result_gen;
-END_RCPP
-}
-// LDU
-List LDU(NumericMatrix D, int l, int u);
-RcppExport SEXP bandsolve_LDU(SEXP DSEXP, SEXP lSEXP, SEXP uSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type D(DSEXP);
-    Rcpp::traits::input_parameter< int >::type l(lSEXP);
-    Rcpp::traits::input_parameter< int >::type u(uSEXP);
-    rcpp_result_gen = Rcpp::wrap(LDU(D, l, u));
     return rcpp_result_gen;
 END_RCPP
 }

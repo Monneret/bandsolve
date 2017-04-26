@@ -1,5 +1,7 @@
 require(bandsolve)
 require(bvpSolve)
+require(microbenchmark)
+require(pracma)
 ### ODE- Poisson equation in 1D ###
 ### Laplacien(y)=f(x) -> y''=f(x); centered second order discrete derivative
 ### Reformulate as standard ODE: y2'=f(x) && y1'=y2
@@ -21,7 +23,7 @@ D0=rep(2,n-2)*(1/dx^2);
 D1=rep(-1,n-3)*(1/dx^2);
 A=cbind(D0,c(D1,0));
 
-res=bandsolve(A,u=1,l=1,b=f[2:(n-1)],sym=TRUE);
+res=bandsolve(A,b=f[2:(n-1)],inplace=TRUE);
 
 derivsyst<-function(x,State,Pars) {
   with(as.list(c(State, Pars)),{
@@ -57,21 +59,21 @@ D=cbind(D,c(rep(0,n-2),1)) ## discrete derivative
 y=smooth.spline(x)$y
 points(gridx,y,type="p",pch=1, lwd = 0.1,col="blue",ylim=c(0.2,1.4))
 
-A=as.rotated(diag(n)+lambda*t(D)%*%D,u=1,l=0)
-res=bandsolve(A,x,u=1,l=0,sym=TRUE)
+A=mat.rot(diag(n)+lambda*t(D)%*%D)
+res=bandsolve(A,x,inplace=TRUE)
 lines(gridx,x,type="l",lwd = 5,col="red",ylim=c(0.2,1.4))
 
-norm(y-x)
+sum(abs(y-x))
 x=xmem
 
-function<-smith(){
+smith<-function(){
   x=xmem
   smooth.spline(x)
 }
 
-function<-band(){
+band<-function(){
   x=xmem
-  bandsolve(A,x,u=1,l=0,sym=TRUE)
+  bandsolve(A,x,inplace=TRUE)
 }
 tmp=microbenchmark(RSpline=smith(),Bdsolve=band())
 boxplot(tmp,ylab="time in ms",xlab="")

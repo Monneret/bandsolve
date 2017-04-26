@@ -6,9 +6,11 @@ using namespace Rcpp;
 //' @param D Rotated row-wised matrix of dimensions n*k, with first column corresponding to the diagonal, the second to the first super-diagonal and so on.
 //' @return List with D as solution of our LDL decomposition.
 //' @name LDL
-//' @examples n=2000;
-//' D0=3+runif(n);
-//' D1=-0.2*runif(n-1);
+//' @examples 
+//' require(bandsolve)
+//' n=10;
+//' D0=1:10;
+//' D1=exp(-c(1:9));
 //' D=cbind(D0,c(D1,0))
 //' sol=LDL(D)
 //' @export
