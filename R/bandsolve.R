@@ -14,7 +14,7 @@
 #' A[3,2]=2
 #' ref=mat.rot(A)
 #' solve(A)
-#' bandsolve(ref)
+#' bandsolve(ref)$x
 #' ref
 #' 
 #' 
@@ -56,18 +56,19 @@ bandsolve<-function(A,b=NULL,inplace=FALSE){
       return(bandsolve_cpp(A,b))
     } else {
       Amem=matrix(NA,nrow(A),ncol(A))
-      Bmem=matrix(NA,nrow(B),ncol(B))
-      Bmem[]=B[]
+      Amem=A[]
+      Bmem=matrix(NA,nrow(b),ncol(b))
+      Bmem[]=b[]
       return(bandsolve_cpp(Amem,Bmem))
     }
   } else if (is.null(b)){
-    B=diag(ncol(A))
+    B=diag(nrow(A))
     if (inplace){
       return(bandsolve_cpp(A,B))
     } else {
       Amem=matrix(NA,nrow(A),ncol(A))
       Amem[]=A[]
-      return(bandsolve_cpp(Amem,B))
+      return(x=bandsolve_cpp(Amem,B)[[2]])
     }
   } else {
     stop("b must either be a vector or a matrix")
