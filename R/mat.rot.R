@@ -9,7 +9,7 @@
 #' @param M Band square matrix or a list of diagonal.
 #' @return Rotated matrix.
 #' @examples
-#' require(bandsolve)
+#' 
 #' A=diag(4)
 #' A[2,3]=2
 #' A[3,2]=2

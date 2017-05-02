@@ -9,7 +9,7 @@
 #' @param R Rotated matrix.
 #' @return Band square matrix.
 #' @examples
-#' require(bandsolve)
+#' 
 #' D0=1:5;
 #' D1=c(0,1,0,0);
 #' D2=rep(2,3);

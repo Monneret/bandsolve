@@ -8,7 +8,7 @@
 #' @param inplace Should results overwrite pre-existing data? Default set to false.
 #' @return Solution of the linear problem.
 #' @examples
-#' require(bandsolve)
+#' 
 #' A=diag(4)
 #' A[2,3]=2
 #' A[3,2]=2
@@ -42,29 +42,29 @@ bandsolve<-function(A,b=NULL,inplace=FALSE){
   if (is.vector(b)){
     if(length(b)!=nrow(A)) stop("Dimension problem");
     if (inplace){
-      return(bandsolve_cpp(A,as.matrix(b)))
+      return(bandsolve_cpp(A,as.matrix(b))$x)
     } else {
       Amem=matrix(NA,nrow(A),ncol(A))
       Amem[]=A[]
       bmem=rep(NA,length(b))
       bmem[]=b[]
-      return(bandsolve_cpp(Amem,as.matrix(bmem)))
+      return(bandsolve_cpp(Amem,as.matrix(bmem))$x)
     }
   } else if (is.matrix(b)){
     if(nrow(b)!=nrow(A)) stop("Dimension problem");
     if (inplace){
-      return(bandsolve_cpp(A,b))
+      return(bandsolve_cpp(A,b)$x)
     } else {
       Amem=matrix(NA,nrow(A),ncol(A))
       Amem=A[]
       Bmem=matrix(NA,nrow(b),ncol(b))
       Bmem[]=b[]
-      return(bandsolve_cpp(Amem,Bmem))
+      return(bandsolve_cpp(Amem,Bmem)$x)
     }
   } else if (is.null(b)){
     B=diag(nrow(A))
     if (inplace){
-      return(bandsolve_cpp(A,B))
+      return(bandsolve_cpp(A,B)$x)
     } else {
       Amem=matrix(NA,nrow(A),ncol(A))
       Amem[]=A[]
