@@ -14,7 +14,7 @@
 #' A[3,2]=2
 #' R=mat2rot(A)
 #' solve(A)
-#' bandsolve(ref)$x
+#' bandsolve(ref)
 #' 
 #' set.seed(100)
 #' 
