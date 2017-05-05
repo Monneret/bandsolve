@@ -37,7 +37,7 @@
 #'}
 
 bandsolve<-function(A,b=NULL,inplace=FALSE){
-  if(nrow(A)==ncol(A)) warning("Watch out, A should be a rotated matrix!");
+  if((nrow(A)==ncol(A))&(A[ncol(A),nrow(A)]!=0)) stop("A should be a rotated matrix!");
   if(A[nrow(A),2]!=0) stop("A should be a rotated matrix!");
   if (is.vector(b)){
     if(length(b)!=nrow(A)) stop("Dimension problem");
