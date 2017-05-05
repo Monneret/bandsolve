@@ -1,4 +1,5 @@
 ## Check functions
+set.seed(100)
 require(bandsolve)
 refbandsolve5=function(D0,D1,D2,D3,D4,D5,b) {
   A=diag(D0);
@@ -33,7 +34,7 @@ title(main="Consistency of solutions")
 
 
 
-Ures=rot.mat(D);
+Ures=rot2mat(D);
 Dres=diag(diag(Ures));
 Lres=t(Ures);
 diag(Ures)=1;

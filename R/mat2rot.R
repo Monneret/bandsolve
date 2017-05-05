@@ -4,7 +4,7 @@
 #' @description Rotate a symmetric band matrix to get the rotated matrix associated.
 #' Each column of the rotated matrix correspond to a diagonal. The first column is the main diagonal, the second one is the upper-diagonal and so on.
 #' Artificial 0 are placed at the end of each column if necessary.
-#' @title mat.rot
+#' @title mat2rot
 #' @title Rotate a band matrix to get the rotated row-wised matrix associated.
 #' @param M Band square matrix or a list of diagonal.
 #' @return Rotated matrix.
@@ -17,12 +17,12 @@
 #' ## Original Matrix
 #' A
 #' ## Rotated version
-#' ref=mat.rot(A)
-#' ref
+#' R=mat2rot(A)
+#' R
 #' 
-#' rot.mat(mat.rot(A))
+#' rot2mat(mat2rot(A))
 
-mat.rot <- function(M){
+mat2rot <- function(M){
   if (is.matrix(M)){
   N=ncol(M);
   l=0
@@ -34,7 +34,11 @@ mat.rot <- function(M){
   R[,1]=diag(M);
   if (l>0){
     for (j in 1:l){
-      R[,1+j]=c(diag(M[-c(N:(N-j+1)),-c(1:j)]),rep(0,j))
+      if (j == N-1){
+        R[,1+j]=c(M[-c(N:(N-j+1)),-c(1:j)],rep(0,j))
+      } else {
+        R[,1+j]=c(diag(M[-c(N:(N-j+1)),-c(1:j)]),rep(0,j))
+      }
     }
   }
   return(R)

@@ -12,11 +12,11 @@
 #' A=diag(4)
 #' A[2,3]=2
 #' A[3,2]=2
-#' ref=mat.rot(A)
+#' R=mat2rot(A)
 #' solve(A)
 #' bandsolve(ref)$x
-#' ref
 #' 
+#' set.seed(100)
 #' 
 #' n=1000;
 #' D0=rep(1.25,n)
@@ -29,15 +29,15 @@
 #' A=diag(D0);
 #' A[-n,-1]=A[-n,-1]+diag(D1);
 #' A[-1,-n]=A[-1,-n]+diag(D1);
-#' rotated.A=mat.rot(list(D0,D1))
+#' R=mat2rot(list(D0,D1))
 #' r=microbenchmark(
 #' SOLVE=solve(A,b),
-#' BANDSOLVE=bandsolve(rotated.A,b=b,inplace=TRUE)$x,times=100)
+#' BANDSOLVE=bandsolve(R,b=b,inplace=TRUE),times=100)
 #'boxplot(r)
 #'}
 
 bandsolve<-function(A,b=NULL,inplace=FALSE){
-  if(nrow(A)==ncol(A)) stop("A should be a rotated matrix!");
+  if(nrow(A)==ncol(A)) warning("Watch out, A should be a rotated matrix!");
   if(A[nrow(A),2]!=0) stop("A should be a rotated matrix!");
   if (is.vector(b)){
     if(length(b)!=nrow(A)) stop("Dimension problem");

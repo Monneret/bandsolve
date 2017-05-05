@@ -2,6 +2,7 @@ require(bandsolve)
 require(bvpSolve)
 require(microbenchmark)
 require(pracma)
+set.seed(100)
 ### ODE- Poisson equation in 1D ###
 ### Laplacien(y)=f(x) -> y''=f(x); centered second order discrete derivative
 ### Reformulate as standard ODE: y2'=f(x) && y1'=y2
@@ -59,7 +60,7 @@ D=cbind(D,c(rep(0,n-2),1)) ## discrete derivative
 y=smooth.spline(x)$y
 points(gridx,y,type="p",pch=1, lwd = 0.1,col="blue",ylim=c(0.2,1.4))
 
-A=mat.rot(diag(n)+lambda*t(D)%*%D)
+A=mat2rot(diag(n)+lambda*t(D)%*%D)
 res=bandsolve(A,x,inplace=TRUE)
 lines(gridx,x,type="l",lwd = 5,col="red",ylim=c(0.2,1.4))
 

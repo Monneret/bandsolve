@@ -2,7 +2,7 @@
 
 export(LDL)
 export(bandsolve)
-export(mat.rot)
-export(rot.mat)
+export(mat2rot)
+export(rot2mat)
 import(Rcpp)
 useDynLib(bandsolve)

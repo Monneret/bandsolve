@@ -13,7 +13,7 @@ List with D as solution of our LDL decomposition.
 Fast inplace LDL decomposition of symmetric band matrix of length k.
 }
 \examples{
-require(bandsolve)
+
 n=10;
 D0=1:10;
 D1=exp(-c(1:9));

@@ -20,15 +20,15 @@ Solution of the linear problem.
 Main function to solve efficiently and quickly a symmetric bandlinear system. Theses systems are solved much faster than standards system, dropping from complexity O(n³) to O(0.5*nk²), where k is the number of sub diagonal.
 }
 \examples{
-require(bandsolve)
+
 A=diag(4)
 A[2,3]=2
 A[3,2]=2
-ref=mat.rot(A)
+R=mat2rot(A)
 solve(A)
-bandsolve(ref)
-ref
+bandsolve(ref)$x
 
+set.seed(100)
 
 n=1000;
 D0=rep(1.25,n)
@@ -41,10 +41,10 @@ if(require(microbenchmark)){
 A=diag(D0);
 A[-n,-1]=A[-n,-1]+diag(D1);
 A[-1,-n]=A[-1,-n]+diag(D1);
-rotated.A=mat.rot(list(D0,D1))
+R=mat2rot(list(D0,D1))
 r=microbenchmark(
 SOLVE=solve(A,b),
-BANDSOLVE=bandsolve(rotated.A,b=b,inplace=TRUE)$x,times=100)
+BANDSOLVE=bandsolve(R,b=b,inplace=TRUE),times=100)
 boxplot(r)
 }
 }

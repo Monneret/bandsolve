@@ -11,7 +11,7 @@ bandsolve_cpp <- function(D, B) {
 #' @return List with D as solution of our LDL decomposition.
 #' @name LDL
 #' @examples 
-#' require(bandsolve)
+#' 
 #' n=10;
 #' D0=1:10;
 #' D1=exp(-c(1:9));
